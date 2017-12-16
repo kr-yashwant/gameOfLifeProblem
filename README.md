@@ -17,6 +17,7 @@ and the discrete moment at which this happens is sometimes called a tick. (In ot
 The rules continue to be applied repeatedly to create further generations.
 
 Problem:
+
 The inputs below represent the cells in the universe as X or - . X is a alive cell. - is a dead cell or no cell.
 The below inputs provide the provide pattern or initial cells in the universe .
 The output is the state of the system in the next tick (one run of the application of all the rules) , represented in the same format.
@@ -24,53 +25,97 @@ The output is the state of the system in the next tick (one run of the applicati
 ------------------------------------------------------------------------------------------------------------------
 Input A:
 (Block pattern - Still life)
-1, 1
-1, 2
-2, 1
-2, 2
+
+ 1, 1
+ 
+ 1, 2
+ 
+ 2, 1
+ 
+ 2, 2
+ 
 Output A:
+
 1, 1
+
 1, 2
+
 2, 1
+
 2, 2
+
 ------------------------------------------------------------------------------------------------------------------
 Input B
 (Boat pattern - Still life)
+
 0, 1
+
 1, 0
+
 2, 1
+
 0, 2
+
 1, 2
+
 Output B
+
 0, 1
+
 1, 0
+
 2, 1
+
 0, 2
+
 1, 2
+
 ------------------------------------------------------------------------------------------------------------------
 Input C
 (Blinker pattern - oscillator)
+
 1, 1
+
 1, 0
+
 1, 2
+
 Output C
+
 1, 1
+
 0, 1
+
 2, 1
+
 ------------------------------------------------------------------------------------------------------------------
 Input D
 (Toad pattern - two phase oscillator)
+
 1, 1
+
 1, 2
+
 1, 3
+
 2, 2
+
 2, 3
+
 2, 4
+
 Output D
+
 0, 2
+
 1, 1
+
 1, 4
+
 2, 1
+
 2, 4
+
 3, 3
+
 ==========
