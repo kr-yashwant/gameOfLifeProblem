@@ -19,8 +19,18 @@ public class Grid {
     public void performNextStep() {
         markCellsToBeSownInNextStep();
         markCellsToDieInNextStep();
-        this.cellsToKill.forEach(this.cells::remove);
+        killMarkedCells();
+        sowMarkedCells();
+    }
+
+    private void sowMarkedCells() {
         this.cells.addAll(this.cellsToSow);
+        this.cellsToSow.clear();
+    }
+
+    private void killMarkedCells() {
+        this.cellsToKill.forEach(this.cells::remove);
+        this.cellsToKill.clear();
     }
 
     public boolean containsAliveCellAt(int xCoordinate, int yCoordinate) {
