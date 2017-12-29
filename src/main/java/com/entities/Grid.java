@@ -2,6 +2,8 @@ package com.entities;
 
 import java.util.*;
 
+import static com.logic.LifeDeathLogicUtil.*;
+
 public class Grid {
     private Set<Cell> cells;
     private Queue<Cell> cellsToSow;
@@ -42,14 +44,14 @@ public class Grid {
         this.cells.stream()
                 .filter(it -> {
                     long countNeighbours = countNeighbours(it);
-                    return countNeighbours < 2 || countNeighbours > 3;
+                    return shouldStarve(countNeighbours) || shouldSuffocate(countNeighbours);
                 })
                 .forEach(this.cellsToKill::offer);
     }
 
     private void markCellsToBeSownInNextStep() {
         this.neighbourCountTable.keySet().stream()
-                .filter(it -> neighbourCountTable.get(it) == 3)
+                .filter(it -> shouldCellBeSown(neighbourCountTable.get(it)))
                 .forEach(this.cellsToSow::offer);
     }
 
