@@ -1,6 +1,7 @@
 package com.entities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -9,6 +10,7 @@ public class Cell {
     private int xCoordinate;
     private int yCoordinate;
     private List<Cell> neighbouringCells;
+    private final int[] range = {-1, 0, 1};
 
     public Cell(int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
@@ -30,14 +32,11 @@ public class Cell {
     }
 
     private void addNeighbours() {
-        this.neighbouringCells.add(new Cell(this.xCoordinate - 1, this.yCoordinate - 1));
-        this.neighbouringCells.add(new Cell(this.xCoordinate - 1, this.yCoordinate));
-        this.neighbouringCells.add(new Cell(this.xCoordinate - 1, this.yCoordinate + 1));
-        this.neighbouringCells.add(new Cell(this.xCoordinate, this.yCoordinate - 1));
-        this.neighbouringCells.add(new Cell(this.xCoordinate, this.yCoordinate + 1));
-        this.neighbouringCells.add(new Cell(this.xCoordinate + 1, this.yCoordinate - 1));
-        this.neighbouringCells.add(new Cell(this.xCoordinate + 1, this.yCoordinate));
-        this.neighbouringCells.add(new Cell(this.xCoordinate + 1, this.yCoordinate + 1));
+        Arrays.stream(range).forEach((rowAddendum) -> Arrays.stream(range).forEach((colAddendum) -> {
+            if (rowAddendum != 0 || colAddendum != 0) {
+                this.neighbouringCells.add(new Cell(this.xCoordinate + rowAddendum, this.yCoordinate + colAddendum));
+            }
+        }));
     }
 
     @Override
